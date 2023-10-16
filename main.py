@@ -1,4 +1,4 @@
-#!/usr/bin/env python 
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # Time    : 2023/10/16 12:48
 # Author  : dongchao
@@ -7,20 +7,14 @@
 
 
 import sys
-from datetime import datetime, date
-from pathlib import Path
+from datetime import date
+import os
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
-from PyQt5.QtCore import pyqtSlot
+from PyQt5 import QtWidgets
+from PyQt5.QtCore import QFile, QTextStream, QStringListModel
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog
+
 from Qt_seg import Ui_MainWindow
-
-
-def shwomessage_load_image_Button():
-    print("click load_image_Button")
-
-
-def shwomessage_startButton():
-    print("click startButton")
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -28,41 +22,53 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
 
-        self.load_image_Button.clicked.connect(shwomessage_load_image_Button)
-        self.startButton.clicked.connect(shwomessage_startButton)
+        self.load_image_Button.clicked.connect(self.show_message_load_image_Button)
+        self.start_Button.clicked.connect(self.show_message_start_Button)
+        self.open_file_Button.clicked.connect(self.show_message_open_file_Button)
 
-        self.status_bar_init()
+        # Todo listview 添加滚动条
 
-    def status_bar_init(self):
-        today = date.today().__str__()
-        self.statusbar.showMessage('当前时间 : 【' + today + "】")
+        self.fileList = []
+        self.directory = ""
 
-    # 添加中文的确认退出提示框
+    def setmodel(self, qList):
+        # 设置模型列表视图，加载数据列表
+        slm = QStringListModel()
+        slm.setStringList(qList)
+        # 设置列表视图的模型
+        self.listView.setModel(slm)
+
+    # 关闭窗口时弹出确认消息
     def closeEvent(self, event):
-        quit_msg_box = QMessageBox()
-
-        quit_msg_box.setWindowTitle('确认提示')
-        quit_msg_box.setText('你确认退出吗？')
-
-        quit_msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-
-        buttonY = quit_msg_box.button(QMessageBox.Yes)
-        buttonY.setText('确定')
-
-        buttonN = quit_msg_box.button(QMessageBox.No)
-        buttonN.setText('取消')
-
-        quit_msg_box.exec_()
-
-        if quit_msg_box.clickedButton() == buttonY:
+        reply = QMessageBox.question(self, 'Warning', '确认退出？', QMessageBox.Yes, QMessageBox.No)
+        if reply == QMessageBox.Yes:
             event.accept()
         else:
             event.ignore()
 
+    def show_message_load_image_Button(self):
+        print("click load_image_Button")
+
+    def show_message_start_Button(self):
+        print("click startButton")
+
+    def show_message_open_file_Button(self):
+
+        self.directory = QFileDialog.getExistingDirectory(None, "选取文件夹", "./")  # 起始路径
+        print("directory = ", self.directory)
+        try:
+            self.fileList = os.listdir(self.directory)
+        except Exception as e:
+            print(e)
+        print("len of filelist = ", len(self.fileList))
+        self.setmodel(self.fileList)
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+
     myWin = MainWindow()
+
     myWin.show()
+
     sys.exit(app.exec_())

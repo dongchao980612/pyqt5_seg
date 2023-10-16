@@ -11,3 +11,5 @@
 
 ## 参考
 - [Pyqt5_yolov5_unet_centernet](https://github.com/GHigher12/Pyqt5_yolov5_unet_centernet)
+- [image_semantic_segmentation](https://github.com/tea321000/image_semantic_segmentation)
+- [FastSegFormer-pyqt](https://github.com/caixiongjiang/FastSegFormer-pyqt)
