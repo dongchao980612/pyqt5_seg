@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>999</width>
+    <height>517</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>实时语义分割平台</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon/car.png</normaloff>icon/car.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="minimumSize">
+           <size>
+            <width>321</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>321</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;原始图像&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="label_3">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>321</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;语义分割结果&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_show">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>321</width>
+            <height>308</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>321</width>
+            <height>308</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+	border: 2px solid #298DFF; /* 无边框 */
+	border-radius: 5px; /* 边框圆角 */
+	background-color:rgb(255,255,255);
+	selection-background-color:rgb(236,116,64);
+	color: #298DFF; /* 文本颜色 */
+	font-family: &quot;Microsoft YaHei&quot;; /* 文本字体族 */
+	font-size: 10pt; /* 文本字体大小 */
+}
+</string>
+          </property>
+          <property name="text">
+           <string>SHOW</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLabel" name="label_seg">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+	border: 2px solid #298DFF; /* 无边框 */
+	border-radius: 5px; /* 边框圆角 */
+	background-color:rgb(255,255,255);
+	selection-background-color:rgb(236,116,64);
+	color: #298DFF; /* 文本颜色 */
+	font-family: &quot;Microsoft YaHei&quot;; /* 文本字体族 */
+	font-size: 10pt; /* 文本字体大小 */
+}
+</string>
+          </property>
+          <property name="text">
+           <string>RESULT</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="load_image_Button">
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	color:rgb(17,17,17);
+	border-width: 1px;
+	border-radius: 6px;
+	border-bottom-color: rgb(150,150,150);
+	border-right-color: rgb(165,165,165);
+	border-left-color: rgb(165,165,165);
+	border-top-color: rgb(180,180,180);
+	border-style: solid;
+	padding: 4px;
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:hover{
+	color:rgb(17,17,17);
+	border-width: 1px;
+	border-radius:6px;
+	border-top-color: rgb(255,150,60);
+	border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));
+	border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));
+	border-bottom-color: rgb(200,70,20);
+	border-style: solid;
+	padding: 2px;
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:default{
+	color:rgb(17,17,17);
+	border-width: 1px;
+	border-radius:6px;
+	border-top-color: rgb(255,150,60);
+	border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));
+	border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));
+	border-bottom-color: rgb(200,70,20);
+	border-style: solid;
+	padding: 2px;
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:pressed{
+	color:rgb(255,255,255);
+	border-width: 1px;
+	border-radius: 6px;
+	border-width: 1px;
+	border-top-color: rgba(255,150,60,200);
+	border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 200));
+	border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 200));
+	border-bottom-color: rgba(200,70,20,200);
+	border-style: solid;
+	padding: 2px;
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(0, 120, 215, 255), stop:1 rgba(0, 120, 215, 255));
+}
+QPushButton:disabled{
+	color:rgb(17,17,17);
+	border-width: 1px;
+	border-radius: 6px;
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(200, 200, 200, 255), stop:1 rgba(230, 230, 230, 255));
+}</string>
+          </property>
+          <property name="text">
+           <string>加载图片</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="startButton">
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	color:rgb(17,17,17);
+	border-width: 1px;
+	border-radius: 6px;
+	border-bottom-color: rgb(150,150,150);
+	border-right-color: rgb(165,165,165);
+	border-left-color: rgb(165,165,165);
+	border-top-color: rgb(180,180,180);
+	border-style: solid;
+	padding: 4px;
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:hover{
+	color:rgb(17,17,17);
+	border-width: 1px;
+	border-radius:6px;
+	border-top-color: rgb(255,150,60);
+	border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));
+	border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));
+	border-bottom-color: rgb(200,70,20);
+	border-style: solid;
+	padding: 2px;
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:default{
+	color:rgb(17,17,17);
+	border-width: 1px;
+	border-radius:6px;
+	border-top-color: rgb(255,150,60);
+	border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));
+	border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));
+	border-bottom-color: rgb(200,70,20);
+	border-style: solid;
+	padding: 2px;
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));
+}
+QPushButton:pressed{
+	color:rgb(255,255,255);
+	border-width: 1px;
+	border-radius: 6px;
+	border-width: 1px;
+	border-top-color: rgba(255,150,60,200);
+	border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 200));
+	border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 200));
+	border-bottom-color: rgba(200,70,20,200);
+	border-style: solid;
+	padding: 2px;
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(0, 120, 215, 255), stop:1 rgba(0, 120, 215, 255));
+}
+QPushButton:disabled{
+	color:rgb(17,17,17);
+	border-width: 1px;
+	border-radius: 6px;
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(200, 200, 200, 255), stop:1 rgba(230, 230, 230, 255));
+}</string>
+          </property>
+          <property name="text">
+           <string>开始检测</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>999</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
