@@ -23,9 +23,9 @@ class Mini_Dataset(object):
         self.rgb = rgb
         self.depth = depth
         self.transform = transform
-        print(self.rgb, self.depth)
+        # print(self.rgb, self.depth)
 
-    def getitem(self):
+    def __getitem__(self):
         sample = {'image': imread(self.rgb), 'depth': imread(self.depth)}
         if self.transform:
             sample = self.transform(sample)
@@ -54,18 +54,17 @@ if __name__ == '__main__':
     if device.type == 'cuda':
         checkpoint = torch.load(model_file)
     else:
-        checkpoint = torch.load(model_file,
-                                map_location=lambda storage, loc: storage)
+        checkpoint = torch.load(model_file, map_location=lambda storage, loc: storage)
     model.load_state_dict(checkpoint['state_dict'])
     print("load over.............")
 
-    sample = data.getitem()
+    sample = data.__getitem__()
     image = sample['image'].unsqueeze(0)
     depth = sample['depth'].unsqueeze(0)
 
     pred = model.forward(image, depth)
 
     output = utils.color_label(torch.max(pred, 1)[1] + 1)[0]
-    print(output.shape)
+    print(device, image.shape, depth.shape, pred.shape, output.shape)
 
-    imageio.imsave("result.jpg", np.uint8(output.cpu().numpy()).transpose((1, 2, 0)))
+    # imageio.imsave("result.jpg", np.uint8(output.cpu().numpy()).transpose((1, 2, 0)))

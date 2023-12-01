@@ -10,17 +10,18 @@ import sys
 
 import imageio
 import numpy as np
-from LDN_transforms import LDN_ScaleNorm, LDN_ToTensor, LDN_Normalize
 import torch
 import torch.optim
 import torch.optim
+from PIL.Image import Image
 from PyQt5.QtCore import QStringListModel
-from PyQt5.QtGui import QPixmap, QImage
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog
 from torch import nn
 from torch.nn import BatchNorm2d
 from torchvision.transforms import Compose
 
+from LDN_transforms import LDN_ScaleNorm, LDN_ToTensor, LDN_Normalize
 from Qt_seg import Ui_MainWindow
 from mini_dataset import Mini_Dataset
 from model.DF_config import config
@@ -46,9 +47,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.slm.setStringList(self.rgbList)
 
-        self.load_image_Button.clicked.connect(self.show_message_load_image_Button)
+        self.load_model_Button.clicked.connect(self.show_message_load_model_Button)
         self.start_Button.clicked.connect(self.show_message_start_Button)
         self.open_file_Button.clicked.connect(self.show_message_open_file_Button)
+        self.save_result_Button.clicked.connect(self.show_message_save_result_Button)
 
         self.listView.setEnabled(True)
         self.listView.clicked.connect(self.clicked)
@@ -68,25 +70,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def clicked(self, qModelIndex):
         self.selected_rgb_file_name = self.rgb_file + "/" + self.rgbList[qModelIndex.row()]
         self.selected_depth_file_name = self.depth_file + "/" + self.depthList[qModelIndex.row()]
-        print("selected_rgb_file_name", self.selected_rgb_file_name)
-        print("selected_depth_file_name", self.selected_depth_file_name)
+        # print("selected_rgb_file_name", self.selected_rgb_file_name)
+        # print("selected_depth_file_name", self.selected_depth_file_name)
         self.pic = QPixmap(self.selected_rgb_file_name)
         self.label_show.setPixmap(self.pic)
         self.label_show.setScaledContents(True)
         # TODO resize pic
 
-    def show_message_load_image_Button(self):
+    def show_message_load_model_Button(self):
         print("click load_image_Button")
 
-    def show_message_start_Button(self):
-        print("click startButton")
-
         # 定义模型
-        model = EncoderDecoder(cfg=config, norm_layer=BatchNorm2d, single_GPU=True)
-        # model.init_weights(cfg=config, pretrained="./DFormer/SUNRGBD_DFormer_Tiny.pth")
+        self.model = EncoderDecoder(cfg=config, norm_layer=BatchNorm2d, single_GPU=True)
         if torch.cuda.device_count() > 1:
             print("Let's use", torch.cuda.device_count(), "GPUs!")
-            model = nn.DataParallel(model)
+            model = nn.DataParallel(self.model)
         model_file = "save_model/ckpt_epoch_50.pth"
         print("=> loading checkpoint '{}'".format(model_file))
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -96,8 +94,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             checkpoint = torch.load(model_file,
                                     map_location=lambda storage, loc: storage)
-        model.load_state_dict(checkpoint['state_dict'])
+        self.model.load_state_dict(checkpoint['state_dict'])
         print("load over.............")
+
+    def show_message_start_Button(self):
+        print("click startButton")
+
         # 加载数据
         L_transform = Compose([
             LDN_ScaleNorm(),  # resize
@@ -105,22 +107,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             LDN_Normalize()  # Normalize
         ])
         data = Mini_Dataset(self.selected_rgb_file_name, self.selected_depth_file_name, L_transform)
-        sample = data.getitem()
+        sample = data.__getitem__()
         image = sample['image'].unsqueeze(0)
         depth = sample['depth'].unsqueeze(0)
-        print(image.shape, depth.shape)
+        print("image.shape:", image.shape, "depth.shape:", depth.shape)
 
         # 预测
         with torch.no_grad():
-            pred = model.forward(image, depth)
-        output = utils.color_label(torch.max(pred, 1)[1] + 1)[0]
+            pred = self.model.forward(image, depth)
+        self.output = utils.color_label(torch.max(pred, 1)[1] + 1)[0]
 
-        imageio.imsave("result.jpg", np.uint8(output.cpu().numpy()).transpose((1, 2, 0)))
+        imageio.imsave("result.jpg", np.uint8(self.output.cpu().numpy()).transpose((1, 2, 0)))
         pix = QPixmap("result.jpg")
-
-        # rgb_img = np.uint8(output.cpu().numpy()).transpose((1, 2, 0))
-        # qImag=QImage(rgb_img, rgb_img.shape[1], rgb_img.shape[0], rgb_img.shape[1]*3,  QImage.Format_RGB888)
-        # pix=QPixmap(qImag).scaled(self.label_seg.width(), self.label_seg.height())
 
         self.label_seg.setPixmap(pix)
         self.label_seg.setScaledContents(True)
@@ -140,6 +138,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         print("len of filelist = ", len(self.rgbList))
 
         self.slm.setStringList(self.rgbList)
+
+    def show_message_save_result_Button(self):
+        self.save_root = QFileDialog.getSaveFileName(None, "另存为", "./","普通图像(*.jpg *.png *.bmp)")
+        if self.save_root is not  None:
+            imageio.imsave("result.jpg", np.uint8(self.output.cpu().numpy()).transpose((1, 2, 0)))
+            QMessageBox.about(self, "成功", "保存成功！")
+        else:
+            QMessageBox.critical(self, "错误！", "未保存任何文件！", QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
 
 
 if __name__ == "__main__":

@@ -27,7 +27,7 @@ class LDN_ScaleNorm(object):
         return {'image': image, 'depth': depth}
 
 
-# Transforms on torch.*Tensor
+# Transforms on torch.Tensor
 class LDN_Normalize(object):
     def __call__(self, sample):
         image, depth = sample['image'], sample['depth']

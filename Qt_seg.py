@@ -181,8 +181,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
-        self.load_image_Button = QtWidgets.QPushButton(self.centralwidget)
-        self.load_image_Button.setStyleSheet("QPushButton{\n"
+        self.load_model_Button = QtWidgets.QPushButton(self.centralwidget)
+        self.load_model_Button.setStyleSheet("QPushButton{\n"
 "    color:rgb(17,17,17);\n"
 "    border-width: 1px;\n"
 "    border-radius: 6px;\n"
@@ -237,8 +237,8 @@ class Ui_MainWindow(object):
 "    border-radius: 6px;\n"
 "    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(200, 200, 200, 255), stop:1 rgba(230, 230, 230, 255));\n"
 "}")
-        self.load_image_Button.setObjectName("load_image_Button")
-        self.horizontalLayout.addWidget(self.load_image_Button)
+        self.load_model_Button.setObjectName("load_model_Button")
+        self.horizontalLayout.addWidget(self.load_model_Button)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
         self.start_Button = QtWidgets.QPushButton(self.centralwidget)
@@ -301,6 +301,66 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.start_Button)
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem2)
+        self.save_result_Button = QtWidgets.QPushButton(self.centralwidget)
+        self.save_result_Button.setStyleSheet("QPushButton{\n"
+"    color:rgb(17,17,17);\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    border-bottom-color: rgb(150,150,150);\n"
+"    border-right-color: rgb(165,165,165);\n"
+"    border-left-color: rgb(165,165,165);\n"
+"    border-top-color: rgb(180,180,180);\n"
+"    border-style: solid;\n"
+"    padding: 4px;\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"}\n"
+"QPushButton:hover{\n"
+"    color:rgb(17,17,17);\n"
+"    border-width: 1px;\n"
+"    border-radius:6px;\n"
+"    border-top-color: rgb(255,150,60);\n"
+"    border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
+"    border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
+"    border-bottom-color: rgb(200,70,20);\n"
+"    border-style: solid;\n"
+"    padding: 2px;\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"}\n"
+"QPushButton:default{\n"
+"    color:rgb(17,17,17);\n"
+"    border-width: 1px;\n"
+"    border-radius:6px;\n"
+"    border-top-color: rgb(255,150,60);\n"
+"    border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
+"    border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
+"    border-bottom-color: rgb(200,70,20);\n"
+"    border-style: solid;\n"
+"    padding: 2px;\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"}\n"
+"QPushButton:pressed{\n"
+"    color:rgb(255,255,255);\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    border-width: 1px;\n"
+"    border-top-color: rgba(255,150,60,200);\n"
+"    border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 200));\n"
+"    border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 200));\n"
+"    border-bottom-color: rgba(200,70,20,200);\n"
+"    border-style: solid;\n"
+"    padding: 2px;\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(0, 120, 215, 255), stop:1 rgba(0, 120, 215, 255));\n"
+"}\n"
+"QPushButton:disabled{\n"
+"    color:rgb(17,17,17);\n"
+"    border-width: 1px;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(200, 200, 200, 255), stop:1 rgba(230, 230, 230, 255));\n"
+"}")
+        self.save_result_Button.setObjectName("save_result_Button")
+        self.horizontalLayout.addWidget(self.save_result_Button)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem3)
         self.verticalLayout_2.addLayout(self.horizontalLayout)
         self.horizontalLayout_4.addLayout(self.verticalLayout_2)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -315,5 +375,6 @@ class Ui_MainWindow(object):
         self.open_file_Button.setText(_translate("MainWindow", "打开文件夹"))
         self.label.setText(_translate("MainWindow", "原始图像"))
         self.label_3.setText(_translate("MainWindow", "分割结果"))
-        self.load_image_Button.setText(_translate("MainWindow", "加载图片"))
+        self.load_model_Button.setText(_translate("MainWindow", "加载模型"))
         self.start_Button.setText(_translate("MainWindow", "开始检测"))
+        self.save_result_Button.setText(_translate("MainWindow", "保存结果"))
