@@ -161,3 +161,4 @@ cython_debug/
 
 /test_image
 /save_model
+result.jpg

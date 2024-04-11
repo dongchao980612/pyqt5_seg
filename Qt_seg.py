@@ -14,367 +14,223 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(850, 500)
-        MainWindow.setMinimumSize(QtCore.QSize(850, 500))
-        MainWindow.setMaximumSize(QtCore.QSize(850, 500))
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../../.designer/backup/icon/car.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet("")
-        MainWindow.setTabShape(QtWidgets.QTabWidget.Rounded)
+        MainWindow.resize(1472, 712)
+        MainWindow.setMinimumSize(QtCore.QSize(1472, 712))
+        MainWindow.setMaximumSize(QtCore.QSize(1472, 712))
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        MainWindow.setFont(font)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
+        self.gridLayout = QtWidgets.QGridLayout()
+        self.gridLayout.setObjectName("gridLayout")
+        self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
+        self.progressBar.setProperty("value", 0)
+        self.progressBar.setObjectName("progressBar")
+        self.gridLayout.addWidget(self.progressBar, 2, 0, 1, 5)
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setMinimumSize(QtCore.QSize(0, 0))
-        self.label_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.label_2.setStyleSheet("QLabel {\n"
-"    border: 1px solid #298DFF; /* 无边框 */\n"
-"    font-weight:600;\n"
-"    font-size: 22pt; /* 文本字体大小 */\n"
-"}\n"
-"")
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        self.label_2.setFont(font)
+        self.label_2.setTextFormat(QtCore.Qt.PlainText)
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName("label_2")
-        self.verticalLayout.addWidget(self.label_2)
-        self.listView = QtWidgets.QListView(self.centralwidget)
-        self.listView.setEnabled(False)
-        self.listView.setStyleSheet("QListView{\n"
-"    background-color:rgb(231, 235, 255);\n"
-"}")
-        self.listView.setObjectName("listView")
-        self.verticalLayout.addWidget(self.listView)
-        self.open_file_Button = QtWidgets.QPushButton(self.centralwidget)
-        self.open_file_Button.setStyleSheet("QPushButton{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius: 6px;\n"
-"    border-bottom-color: rgb(150,150,150);\n"
-"    border-right-color: rgb(165,165,165);\n"
-"    border-left-color: rgb(165,165,165);\n"
-"    border-top-color: rgb(180,180,180);\n"
-"    border-style: solid;\n"
-"    padding: 4px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"}\n"
-"QPushButton:hover{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius:6px;\n"
-"    border-top-color: rgb(255,150,60);\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-bottom-color: rgb(200,70,20);\n"
-"    border-style: solid;\n"
-"    padding: 2px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"}\n"
-"QPushButton:default{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius:6px;\n"
-"    border-top-color: rgb(255,150,60);\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-bottom-color: rgb(200,70,20);\n"
-"    border-style: solid;\n"
-"    padding: 2px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"}\n"
-"QPushButton:pressed{\n"
-"    color:rgb(255,255,255);\n"
-"    border-width: 1px;\n"
-"    border-radius: 6px;\n"
-"    border-width: 1px;\n"
-"    border-top-color: rgba(255,150,60,200);\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 200));\n"
-"    border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 200));\n"
-"    border-bottom-color: rgba(200,70,20,200);\n"
-"    border-style: solid;\n"
-"    padding: 2px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(0, 120, 215, 255), stop:1 rgba(0, 120, 215, 255));\n"
-"}\n"
-"QPushButton:disabled{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius: 6px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(200, 200, 200, 255), stop:1 rgba(230, 230, 230, 255));\n"
-"}")
-        self.open_file_Button.setObjectName("open_file_Button")
-        self.verticalLayout.addWidget(self.open_file_Button)
-        self.horizontalLayout_4.addLayout(self.verticalLayout)
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setMinimumSize(QtCore.QSize(0, 0))
-        self.label.setMaximumSize(QtCore.QSize(320, 16777215))
-        self.label.setStyleSheet("QLabel {\n"
-"    border: 1px solid #298DFF; /* 无边框 */\n"
-"    font-weight:600;\n"
-"    font-size: 22pt; /* 文本字体大小 */\n"
-"}\n"
-"")
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.label.setObjectName("label")
-        self.horizontalLayout_2.addWidget(self.label)
+        self.gridLayout.addWidget(self.label_2, 4, 0, 1, 2)
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setMinimumSize(QtCore.QSize(0, 0))
-        self.label_3.setMaximumSize(QtCore.QSize(320, 16777215))
-        self.label_3.setStyleSheet("QLabel {\n"
-"    border: 1px solid #298DFF; /* 无边框 */\n"
-"    font-weight:600;\n"
-"    font-size: 22pt; /* 文本字体大小 */\n"
-"}\n"
-"")
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        self.label_3.setFont(font)
+        self.label_3.setTextFormat(QtCore.Qt.PlainText)
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
         self.label_3.setObjectName("label_3")
-        self.horizontalLayout_2.addWidget(self.label_3)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_2)
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.label_show = QtWidgets.QLabel(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
+        self.gridLayout.addWidget(self.label_3, 4, 4, 1, 2)
+        self.gpu_combo_box = QtWidgets.QComboBox(self.centralwidget)
+        self.gpu_combo_box.setObjectName("gpu_combo_box")
+        self.gpu_combo_box.addItem("")
+        self.gpu_combo_box.addItem("")
+        self.gridLayout.addWidget(self.gpu_combo_box, 1, 1, 1, 2)
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        self.label_4.setFont(font)
+        self.label_4.setTextFormat(QtCore.Qt.PlainText)
+        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_4.setObjectName("label_4")
+        self.gridLayout.addWidget(self.label_4, 1, 3, 1, 2)
+        self.save_seg_button = QtWidgets.QPushButton(self.centralwidget)
+        self.save_seg_button.setEnabled(True)
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        self.save_seg_button.setFont(font)
+        self.save_seg_button.setObjectName("save_seg_button")
+        self.gridLayout.addWidget(self.save_seg_button, 3, 5, 1, 1)
+        self.show_layers = QtWidgets.QLabel(self.centralwidget)
+        self.show_layers.setMinimumSize(QtCore.QSize(640, 480))
+        self.show_layers.setMaximumSize(QtCore.QSize(640, 480))
+        self.show_layers.setText("")
+        self.show_layers.setObjectName("show_layers")
+        self.gridLayout.addWidget(self.show_layers, 5, 4, 1, 2)
+        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(10)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_show.sizePolicy().hasHeightForWidth())
-        self.label_show.setSizePolicy(sizePolicy)
-        self.label_show.setMinimumSize(QtCore.QSize(320, 300))
-        self.label_show.setMaximumSize(QtCore.QSize(320, 300))
-        self.label_show.setStyleSheet("QLabel {\n"
-"    border: 1px solid #298DFF; /* 无边框 */\n"
-"    border-radius: 5px; /* 边框圆角 */\n"
-"    background-color:rgb(225, 250, 255);\n"
-"    selection-background-color:rgb(236,116,64);\n"
-"    color: #298DFF; /* 文本颜色 */\n"
-"    font-family: \"Microsoft YaHei\"; /* 文本字体族 */\n"
-"    font-size: 10pt; /* 文本字体大小 */\n"
-"}\n"
-"")
-        self.label_show.setText("")
-        self.label_show.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_show.setObjectName("label_show")
-        self.horizontalLayout_3.addWidget(self.label_show)
-        self.label_seg = QtWidgets.QLabel(self.centralwidget)
-        self.label_seg.setMinimumSize(QtCore.QSize(320, 300))
-        self.label_seg.setMaximumSize(QtCore.QSize(320, 300))
-        self.label_seg.setStyleSheet("QLabel {\n"
-"    border: 1px solid #298DFF; /* 无边框 */\n"
-"    border-radius: 5px; /* 边框圆角 */\n"
-"    background-color:rgb(225, 250, 255);\n"
-"    selection-background-color:rgb(236,116,64);\n"
-"    color: #298DFF; /* 文本颜色 */\n"
-"    font-family: \"Microsoft YaHei\"; /* 文本字体族 */\n"
-"    font-size: 10pt; /* 文本字体大小 */\n"
-"}\n"
-"")
-        self.label_seg.setText("")
-        self.label_seg.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_seg.setObjectName("label_seg")
-        self.horizontalLayout_3.addWidget(self.label_seg)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        self.load_model_Button = QtWidgets.QPushButton(self.centralwidget)
-        self.load_model_Button.setStyleSheet("QPushButton{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius: 6px;\n"
-"    border-bottom-color: rgb(150,150,150);\n"
-"    border-right-color: rgb(165,165,165);\n"
-"    border-left-color: rgb(165,165,165);\n"
-"    border-top-color: rgb(180,180,180);\n"
-"    border-style: solid;\n"
-"    padding: 4px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"}\n"
-"QPushButton:hover{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius:6px;\n"
-"    border-top-color: rgb(255,150,60);\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-bottom-color: rgb(200,70,20);\n"
-"    border-style: solid;\n"
-"    padding: 2px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"}\n"
-"QPushButton:default{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius:6px;\n"
-"    border-top-color: rgb(255,150,60);\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-bottom-color: rgb(200,70,20);\n"
-"    border-style: solid;\n"
-"    padding: 2px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"}\n"
-"QPushButton:pressed{\n"
-"    color:rgb(255,255,255);\n"
-"    border-width: 1px;\n"
-"    border-radius: 6px;\n"
-"    border-width: 1px;\n"
-"    border-top-color: rgba(255,150,60,200);\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 200));\n"
-"    border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 200));\n"
-"    border-bottom-color: rgba(200,70,20,200);\n"
-"    border-style: solid;\n"
-"    padding: 2px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(0, 120, 215, 255), stop:1 rgba(0, 120, 215, 255));\n"
-"}\n"
-"QPushButton:disabled{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius: 6px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(200, 200, 200, 255), stop:1 rgba(230, 230, 230, 255));\n"
-"}")
-        self.load_model_Button.setObjectName("load_model_Button")
-        self.horizontalLayout.addWidget(self.load_model_Button)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem1)
-        self.start_Button = QtWidgets.QPushButton(self.centralwidget)
-        self.start_Button.setStyleSheet("QPushButton{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius: 6px;\n"
-"    border-bottom-color: rgb(150,150,150);\n"
-"    border-right-color: rgb(165,165,165);\n"
-"    border-left-color: rgb(165,165,165);\n"
-"    border-top-color: rgb(180,180,180);\n"
-"    border-style: solid;\n"
-"    padding: 4px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"}\n"
-"QPushButton:hover{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius:6px;\n"
-"    border-top-color: rgb(255,150,60);\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-bottom-color: rgb(200,70,20);\n"
-"    border-style: solid;\n"
-"    padding: 2px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"}\n"
-"QPushButton:default{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius:6px;\n"
-"    border-top-color: rgb(255,150,60);\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-bottom-color: rgb(200,70,20);\n"
-"    border-style: solid;\n"
-"    padding: 2px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"}\n"
-"QPushButton:pressed{\n"
-"    color:rgb(255,255,255);\n"
-"    border-width: 1px;\n"
-"    border-radius: 6px;\n"
-"    border-width: 1px;\n"
-"    border-top-color: rgba(255,150,60,200);\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 200));\n"
-"    border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 200));\n"
-"    border-bottom-color: rgba(200,70,20,200);\n"
-"    border-style: solid;\n"
-"    padding: 2px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(0, 120, 215, 255), stop:1 rgba(0, 120, 215, 255));\n"
-"}\n"
-"QPushButton:disabled{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius: 6px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(200, 200, 200, 255), stop:1 rgba(230, 230, 230, 255));\n"
-"}")
-        self.start_Button.setObjectName("start_Button")
-        self.horizontalLayout.addWidget(self.start_Button)
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem2)
-        self.save_result_Button = QtWidgets.QPushButton(self.centralwidget)
-        self.save_result_Button.setStyleSheet("QPushButton{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius: 6px;\n"
-"    border-bottom-color: rgb(150,150,150);\n"
-"    border-right-color: rgb(165,165,165);\n"
-"    border-left-color: rgb(165,165,165);\n"
-"    border-top-color: rgb(180,180,180);\n"
-"    border-style: solid;\n"
-"    padding: 4px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"}\n"
-"QPushButton:hover{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius:6px;\n"
-"    border-top-color: rgb(255,150,60);\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-bottom-color: rgb(200,70,20);\n"
-"    border-style: solid;\n"
-"    padding: 2px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"}\n"
-"QPushButton:default{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius:6px;\n"
-"    border-top-color: rgb(255,150,60);\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 255));\n"
-"    border-bottom-color: rgb(200,70,20);\n"
-"    border-style: solid;\n"
-"    padding: 2px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(220, 220, 220, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"}\n"
-"QPushButton:pressed{\n"
-"    color:rgb(255,255,255);\n"
-"    border-width: 1px;\n"
-"    border-radius: 6px;\n"
-"    border-width: 1px;\n"
-"    border-top-color: rgba(255,150,60,200);\n"
-"    border-right-color: qlineargradient(spread:pad, x1:0, y1:1, x2:1, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 200));\n"
-"    border-left-color:  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(200, 70, 20, 255), stop:1 rgba(255,150,60, 200));\n"
-"    border-bottom-color: rgba(200,70,20,200);\n"
-"    border-style: solid;\n"
-"    padding: 2px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(0, 120, 215, 255), stop:1 rgba(0, 120, 215, 255));\n"
-"}\n"
-"QPushButton:disabled{\n"
-"    color:rgb(17,17,17);\n"
-"    border-width: 1px;\n"
-"    border-radius: 6px;\n"
-"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(200, 200, 200, 255), stop:1 rgba(230, 230, 230, 255));\n"
-"}")
-        self.save_result_Button.setObjectName("save_result_Button")
-        self.horizontalLayout.addWidget(self.save_result_Button)
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem3)
-        self.verticalLayout_2.addLayout(self.horizontalLayout)
-        self.horizontalLayout_4.addLayout(self.verticalLayout_2)
+        sizePolicy.setHeightForWidth(self.lineEdit.sizePolicy().hasHeightForWidth())
+        self.lineEdit.setSizePolicy(sizePolicy)
+        self.lineEdit.setObjectName("lineEdit")
+        self.gridLayout.addWidget(self.lineEdit, 0, 1, 1, 4)
+        self.label_5 = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        self.label_5.setFont(font)
+        self.label_5.setTextFormat(QtCore.Qt.PlainText)
+        self.label_5.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_5.setObjectName("label_5")
+        self.gridLayout.addWidget(self.label_5, 4, 2, 1, 2)
+        self.model_combo_box = QtWidgets.QComboBox(self.centralwidget)
+        self.model_combo_box.setToolTip("")
+        self.model_combo_box.setObjectName("model_combo_box")
+        self.model_combo_box.addItem("")
+        self.model_combo_box.addItem("")
+        self.model_combo_box.addItem("")
+        self.gridLayout.addWidget(self.model_combo_box, 1, 5, 1, 1)
+        self.output_empty_button = QtWidgets.QPushButton(self.centralwidget)
+        self.output_empty_button.setObjectName("output_empty_button")
+        self.gridLayout.addWidget(self.output_empty_button, 3, 0, 1, 1)
+        self.open_pic_combo_box = QtWidgets.QComboBox(self.centralwidget)
+        self.open_pic_combo_box.setObjectName("open_pic_combo_box")
+        self.open_pic_combo_box.addItem("")
+        self.open_pic_combo_box.addItem("")
+        self.open_pic_combo_box.addItem("")
+        self.gridLayout.addWidget(self.open_pic_combo_box, 0, 0, 1, 1)
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        self.label.setFont(font)
+        self.label.setTextFormat(QtCore.Qt.PlainText)
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
+        self.gridLayout.addWidget(self.label, 1, 0, 1, 1)
+        self.seg_confirm_button = QtWidgets.QPushButton(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        self.seg_confirm_button.setFont(font)
+        self.seg_confirm_button.setObjectName("seg_confirm_button")
+        self.gridLayout.addWidget(self.seg_confirm_button, 2, 5, 1, 1)
+        self.listView = QtWidgets.QListView(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(10)
+        sizePolicy.setVerticalStretch(30)
+        sizePolicy.setHeightForWidth(self.listView.sizePolicy().hasHeightForWidth())
+        self.listView.setSizePolicy(sizePolicy)
+        self.listView.setObjectName("listView")
+        self.gridLayout.addWidget(self.listView, 5, 0, 1, 2)
+        self.browser_button = QtWidgets.QPushButton(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        self.browser_button.setFont(font)
+        self.browser_button.setObjectName("browser_button")
+        self.gridLayout.addWidget(self.browser_button, 0, 5, 1, 1)
+        self.rgb_layers = QtWidgets.QLabel(self.centralwidget)
+        self.rgb_layers.setMinimumSize(QtCore.QSize(640, 480))
+        self.rgb_layers.setMaximumSize(QtCore.QSize(640, 480))
+        self.rgb_layers.setText("")
+        self.rgb_layers.setObjectName("rgb_layers")
+        self.gridLayout.addWidget(self.rgb_layers, 5, 2, 1, 2)
+        self.verticalLayout.addLayout(self.gridLayout)
         MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1472, 23))
+        self.menubar.setObjectName("menubar")
+        self.menu = QtWidgets.QMenu(self.menubar)
+        self.menu.setObjectName("menu")
+        self.menu_2 = QtWidgets.QMenu(self.menubar)
+        self.menu_2.setObjectName("menu_2")
+        self.menu_3 = QtWidgets.QMenu(self.menubar)
+        self.menu_3.setObjectName("menu_3")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+        self.open_pic = QtWidgets.QAction(MainWindow)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/dark/sizegrip.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.open_pic.setIcon(icon)
+        self.open_pic.setObjectName("open_pic")
+        self.save_seg = QtWidgets.QAction(MainWindow)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/light/undock-hover.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.save_seg.setIcon(icon1)
+        self.save_seg.setObjectName("save_seg")
+        self.exit = QtWidgets.QAction(MainWindow)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/dark/close-pressed.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.exit.setIcon(icon2)
+        self.exit.setObjectName("exit")
+        self.action_dark = QtWidgets.QAction(MainWindow)
+        self.action_dark.setObjectName("action_dark")
+        self.action_light = QtWidgets.QAction(MainWindow)
+        self.action_light.setObjectName("action_light")
+        self.author = QtWidgets.QAction(MainWindow)
+        self.author.setObjectName("author")
+        self.open_pic_folder = QtWidgets.QAction(MainWindow)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/dark/vmovetoolbar.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.open_pic_folder.setIcon(icon3)
+        self.open_pic_folder.setObjectName("open_pic_folder")
+        self.open_cam = QtWidgets.QAction(MainWindow)
+        self.open_cam.setObjectName("open_cam")
+        self.menu.addAction(self.open_pic)
+        self.menu.addAction(self.open_pic_folder)
+        self.menu.addAction(self.open_cam)
+        self.menu.addSeparator()
+        self.menu.addAction(self.save_seg)
+        self.menu.addSeparator()
+        self.menu.addAction(self.exit)
+        self.menu_2.addAction(self.action_dark)
+        self.menu_2.addAction(self.action_light)
+        self.menu_3.addAction(self.author)
+        self.menubar.addAction(self.menu.menuAction())
+        self.menubar.addAction(self.menu_2.menuAction())
+        self.menubar.addAction(self.menu_3.menuAction())
 
         self.retranslateUi(MainWindow)
+        self.model_combo_box.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "实时语义分割平台"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "自动语义分割"))
         self.label_2.setText(_translate("MainWindow", "文件列表"))
-        self.open_file_Button.setText(_translate("MainWindow", "打开文件夹"))
-        self.label.setText(_translate("MainWindow", "原始图像"))
-        self.label_3.setText(_translate("MainWindow", "分割结果"))
-        self.load_model_Button.setText(_translate("MainWindow", "加载模型"))
-        self.start_Button.setText(_translate("MainWindow", "开始检测"))
-        self.save_result_Button.setText(_translate("MainWindow", "保存结果"))
+        self.label_3.setText(_translate("MainWindow", "分割效果预览"))
+        self.gpu_combo_box.setToolTip(_translate("MainWindow", "CPU处理一幅图像较慢，视硬件不同大概需要20秒到1分钟，请耐心等待；\n"
+"使用GPU需安装CUDA环境否则仍然会用CPU进行处理，且显存小于8GB的显卡在处理某些图像时可能会爆显存而输出错误的分割结果，这种情况下请尝试使用CPU处理该图片"))
+        self.gpu_combo_box.setItemText(0, _translate("MainWindow", "CPU"))
+        self.gpu_combo_box.setItemText(1, _translate("MainWindow", "GPU"))
+        self.label_4.setText(_translate("MainWindow", "语义分割模型"))
+        self.save_seg_button.setText(_translate("MainWindow", "保存分割结果"))
+        self.label_5.setText(_translate("MainWindow", "RGB图片"))
+        self.model_combo_box.setItemText(0, _translate("MainWindow", "BiseNet"))
+        self.model_combo_box.setItemText(1, _translate("MainWindow", "SINet"))
+        self.model_combo_box.setItemText(2, _translate("MainWindow", "FastDVFN"))
+        self.output_empty_button.setText(_translate("MainWindow", "清空"))
+        self.open_pic_combo_box.setItemText(0, _translate("MainWindow", "打开图片"))
+        self.open_pic_combo_box.setItemText(1, _translate("MainWindow", "打开图片文件夹"))
+        self.open_pic_combo_box.setItemText(2, _translate("MainWindow", "打开摄像头"))
+        self.label.setText(_translate("MainWindow", "是否使用GPU\n"
+"（需安装CUDA）"))
+        self.seg_confirm_button.setText(_translate("MainWindow", "进行分割"))
+        self.browser_button.setText(_translate("MainWindow", "浏览"))
+        self.menu.setTitle(_translate("MainWindow", "菜单"))
+        self.menu_2.setTitle(_translate("MainWindow", "主题"))
+        self.menu_3.setTitle(_translate("MainWindow", "关于"))
+        self.open_pic.setText(_translate("MainWindow", "打开图片"))
+        self.save_seg.setText(_translate("MainWindow", "保存分割结果"))
+        self.exit.setText(_translate("MainWindow", "退出"))
+        self.action_dark.setText(_translate("MainWindow", "dark"))
+        self.action_light.setText(_translate("MainWindow", "light"))
+        self.author.setText(_translate("MainWindow", "作者信息"))
+        self.open_pic_folder.setText(_translate("MainWindow", "打开图片文件夹"))
+        self.open_cam.setText(_translate("MainWindow", "打开摄像头"))
+        self.open_cam.setIconText(_translate("MainWindow", "打开摄像头"))
